@@ -14,10 +14,6 @@ struct ContentView: View {
     @State private var sleepAmount: Double = 8.0
     @State private var coffeAmount: Int = 1
     
-    @State private var alertTitle = ""
-    @State private var alertMessage = ""
-    @State private var showingAlert = false
-    
     static var defaultWakeTime: Date {
         var components = DateComponents()
         components.hour = 7
@@ -25,44 +21,7 @@ struct ContentView: View {
         return Calendar.current.date(from: components) ?? .now
     }
     
-    var body: some View {
-        NavigationStack {
-            Form {
-                VStack(alignment: .leading, spacing: 10) {
-                    Text("When do you want to wake up?")
-                        .font(.headline)
-                    
-                    DatePicker("Please enter a time", selection: $wakeUp, displayedComponents: .hourAndMinute)
-                        .labelsHidden()
-                }
-                
-                VStack(alignment: .leading, spacing: 10) {
-                    Text("How much sleep do you want?")
-                        .font(.headline
-                        )
-                    Stepper("^[\(sleepAmount.formatted()) hours](inflect:true)", value: $sleepAmount, in: 4...12, step: 0.25)
-                }
-                
-                VStack(alignment: .leading, spacing: 10) {
-                    Text("Daily coffee consume")
-                        .font(.headline)
-                    Stepper("^[\(coffeAmount) cup](inflect:true)", value: $coffeAmount, in: 1...20)
-                }
-            }
-            .navigationTitle("Better Rest")
-            .toolbar {
-                Button("Calculate", action: calculateBedTime)
-            }
-            .alert(alertTitle, isPresented: $showingAlert) {
-                Button("Ok") {}
-            } message: {
-                Text(alertMessage)
-            }
-        }
-        
-    }
-    
-    func calculateBedTime() {
+    var sleepResults: String {
         do {
             let config = MLModelConfiguration()
             let model = try SleepCalculator(configuration: config)
@@ -74,16 +33,53 @@ struct ContentView: View {
             let predition = try model.prediction(wake: Double(hour + minute), estimatedSleep: sleepAmount, coffee: Double(coffeAmount))
             
             let sleepTime = wakeUp - predition.actualSleep
-            
-            alertTitle = "Your ideal Bedtime is:"
-            alertMessage = sleepTime.formatted(date: .omitted, time: .shortened)
-            
+            return sleepTime.formatted(date: .omitted, time: .shortened)
         } catch {
-            alertTitle = "Error"
-            alertMessage = "Something went wrong, please try again later."
+            return "There was an error"
+        }
+    }
+    
+    var body: some View {
+        NavigationStack {
+            Form {
+//                VStack(alignment: .leading, spacing: 10) {
+                Section("When do you want to wake up?") {
+//                    Text("When do you want to wake up?")
+//                        .font(.headline)
+                    
+                    DatePicker("Please enter a time", selection: $wakeUp, displayedComponents: .hourAndMinute)
+                        .labelsHidden()
+                }
+                
+                Section("Information about your habits") {
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("How much sleep do you want?")
+                            .font(.headline
+                            )
+                        Stepper("^[\(sleepAmount.formatted()) hours](inflect:true)", value: $sleepAmount, in: 4...12, step: 0.25)
+                    }
+                    
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("Daily coffee consume")
+                            .font(.headline)
+                        Stepper("^[\(coffeAmount) cup](inflect:true)", value: $coffeAmount, in: 0...20)
+//                        Picker("Daily coffe consume", selection: $coffeAmount) {
+//                            ForEach(1..<21) {
+//                                Text(String($0))
+//                            }
+//                        }
+                    }
+                }
+                
+                Section("Recommended bedtime") {
+                    Text("\(sleepResults)")
+                        .font(.title3)
+                }
+            }
+            .navigationTitle("Better Rest")
+
         }
         
-        showingAlert = true
     }
 }
 
