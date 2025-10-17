@@ -64,7 +64,7 @@ struct ContentView: View {
                         )
                         .opacity(selectedFlag == number || selectedFlag == -1 ? 1 : 0.25)
                         .scaleEffect(selectedFlag == -1 ? 1 : selectedFlag == number ? 1.25 : 0.75)
-                        .animation(.default, value: selectedFlag)
+//                        .animation(.default, value: selectedFlag)
 
                     }
                     
@@ -86,7 +86,7 @@ struct ContentView: View {
             .padding()
         }
         .alert(scoreTitle, isPresented: $showingScore) {
-            Button("Continue") { askQuestion() }
+            Button("Continue") { }
         } message: {
             Text(scoreTitle == "Correct!" ? "Your score is: \(userScore)" : "No points this time.")
         }
@@ -100,16 +100,19 @@ struct ContentView: View {
     func flagTapped(_ number: Int) {
         currentQuestion += 1
         selectedFlag = number
+        
         if number == correctAnswer {
             scoreTitle = "Correct!"
             userScore += 1
         } else {
             scoreTitle = "Wrong! That's the flag of \(countries[number])."
+            showingScore = true
         }
         if currentQuestion >= 8 {
             gameOver = true
+        } else {
+            askQuestion()
         }
-        showingScore = true
     }
     
     func restartGame() {
@@ -119,7 +122,9 @@ struct ContentView: View {
     }
     
     func askQuestion() {
-        selectedFlag = -1
+        withAnimation() {
+            selectedFlag = -1
+        }
         countries.shuffle()
         correctAnswer = Int.random(in: 0...2)
     }
