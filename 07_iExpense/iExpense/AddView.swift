@@ -14,6 +14,8 @@ struct AddView: View {
     @State private var type = "Personal"
     @State private var amount: Double = 0
     
+    let localCurrency = Locale.current.currency?.identifier ?? "USD"
+    
     var expenses: Expenses
     
     let types = ["Business", "Personal"]
@@ -27,7 +29,7 @@ struct AddView: View {
                         Text($0)
                     }
                 }
-                TextField("Amount", value: $amount, format: .currency(code: "EUR"))
+                TextField("Amount", value: $amount, format: .currency(code: localCurrency))
                     .keyboardType(.decimalPad)
             }
             .navigationTitle("Add new expense")

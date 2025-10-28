@@ -6,27 +6,20 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		EE3E1CE02EAFBB2300FFF97F /* View-ExpenseStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3E1CDF2EAFBB2300FFF97F /* View-ExpenseStyle.swift */; };
-		EE3E1CE22EAFBFF000FFF97F /* ExpenseSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3E1CE12EAFBFF000FFF97F /* ExpenseSection.swift */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXFileReference section */
-		EE34E1252EACCF9A00815A83 /* iExpense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iExpense.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		EE3E1CDF2EAFBB2300FFF97F /* View-ExpenseStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View-ExpenseStyle.swift"; sourceTree = "<group>"; };
-		EE3E1CE12EAFBFF000FFF97F /* ExpenseSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseSection.swift; sourceTree = "<group>"; };
+		EEE1A6A42EB1210B00732109 /* Moonshot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moonshot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		EE34E1272EACCF9A00815A83 /* iExpense */ = {
+		EEE1A6A62EB1210B00732109 /* Moonshot */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = iExpense;
+			path = Moonshot;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		EE34E1222EACCF9A00815A83 /* Frameworks */ = {
+		EEE1A6A12EB1210B00732109 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -36,20 +29,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		EE34E11C2EACCF9A00815A83 = {
+		EEE1A69B2EB1210B00732109 = {
 			isa = PBXGroup;
 			children = (
-				EE3E1CE12EAFBFF000FFF97F /* ExpenseSection.swift */,
-				EE3E1CDF2EAFBB2300FFF97F /* View-ExpenseStyle.swift */,
-				EE34E1272EACCF9A00815A83 /* iExpense */,
-				EE34E1262EACCF9A00815A83 /* Products */,
+				EEE1A6A62EB1210B00732109 /* Moonshot */,
+				EEE1A6A52EB1210B00732109 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		EE34E1262EACCF9A00815A83 /* Products */ = {
+		EEE1A6A52EB1210B00732109 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EE34E1252EACCF9A00815A83 /* iExpense.app */,
+				EEE1A6A42EB1210B00732109 /* Moonshot.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -57,64 +48,64 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		EE34E1242EACCF9A00815A83 /* iExpense */ = {
+		EEE1A6A32EB1210B00732109 /* Moonshot */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EE34E1302EACCF9A00815A83 /* Build configuration list for PBXNativeTarget "iExpense" */;
+			buildConfigurationList = EEE1A6AF2EB1210C00732109 /* Build configuration list for PBXNativeTarget "Moonshot" */;
 			buildPhases = (
-				EE34E1212EACCF9A00815A83 /* Sources */,
-				EE34E1222EACCF9A00815A83 /* Frameworks */,
-				EE34E1232EACCF9A00815A83 /* Resources */,
+				EEE1A6A02EB1210B00732109 /* Sources */,
+				EEE1A6A12EB1210B00732109 /* Frameworks */,
+				EEE1A6A22EB1210B00732109 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				EE34E1272EACCF9A00815A83 /* iExpense */,
+				EEE1A6A62EB1210B00732109 /* Moonshot */,
 			);
-			name = iExpense;
+			name = Moonshot;
 			packageProductDependencies = (
 			);
-			productName = iExpense;
-			productReference = EE34E1252EACCF9A00815A83 /* iExpense.app */;
+			productName = Moonshot;
+			productReference = EEE1A6A42EB1210B00732109 /* Moonshot.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		EE34E11D2EACCF9A00815A83 /* Project object */ = {
+		EEE1A69C2EB1210B00732109 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 2600;
 				LastUpgradeCheck = 2600;
 				TargetAttributes = {
-					EE34E1242EACCF9A00815A83 = {
+					EEE1A6A32EB1210B00732109 = {
 						CreatedOnToolsVersion = 26.0.1;
 					};
 				};
 			};
-			buildConfigurationList = EE34E1202EACCF9A00815A83 /* Build configuration list for PBXProject "iExpense" */;
+			buildConfigurationList = EEE1A69F2EB1210B00732109 /* Build configuration list for PBXProject "Moonshot" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = EE34E11C2EACCF9A00815A83;
+			mainGroup = EEE1A69B2EB1210B00732109;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = EE34E1262EACCF9A00815A83 /* Products */;
+			productRefGroup = EEE1A6A52EB1210B00732109 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				EE34E1242EACCF9A00815A83 /* iExpense */,
+				EEE1A6A32EB1210B00732109 /* Moonshot */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		EE34E1232EACCF9A00815A83 /* Resources */ = {
+		EEE1A6A22EB1210B00732109 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -124,19 +115,17 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		EE34E1212EACCF9A00815A83 /* Sources */ = {
+		EEE1A6A02EB1210B00732109 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EE3E1CE02EAFBB2300FFF97F /* View-ExpenseStyle.swift in Sources */,
-				EE3E1CE22EAFBFF000FFF97F /* ExpenseSection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		EE34E12E2EACCF9A00815A83 /* Debug */ = {
+		EEE1A6AD2EB1210C00732109 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -200,7 +189,7 @@
 			};
 			name = Debug;
 		};
-		EE34E12F2EACCF9A00815A83 /* Release */ = {
+		EEE1A6AE2EB1210C00732109 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -257,7 +246,7 @@
 			};
 			name = Release;
 		};
-		EE34E1312EACCF9A00815A83 /* Debug */ = {
+		EEE1A6B02EB1210C00732109 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -277,7 +266,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.boolproof.iExpense;
+				PRODUCT_BUNDLE_IDENTIFIER = com.boolproof.Moonshot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -289,7 +278,7 @@
 			};
 			name = Debug;
 		};
-		EE34E1322EACCF9A00815A83 /* Release */ = {
+		EEE1A6B12EB1210C00732109 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -309,7 +298,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.boolproof.iExpense;
+				PRODUCT_BUNDLE_IDENTIFIER = com.boolproof.Moonshot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -324,25 +313,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		EE34E1202EACCF9A00815A83 /* Build configuration list for PBXProject "iExpense" */ = {
+		EEE1A69F2EB1210B00732109 /* Build configuration list for PBXProject "Moonshot" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				EE34E12E2EACCF9A00815A83 /* Debug */,
-				EE34E12F2EACCF9A00815A83 /* Release */,
+				EEE1A6AD2EB1210C00732109 /* Debug */,
+				EEE1A6AE2EB1210C00732109 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EE34E1302EACCF9A00815A83 /* Build configuration list for PBXNativeTarget "iExpense" */ = {
+		EEE1A6AF2EB1210C00732109 /* Build configuration list for PBXNativeTarget "Moonshot" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				EE34E1312EACCF9A00815A83 /* Debug */,
-				EE34E1322EACCF9A00815A83 /* Release */,
+				EEE1A6B02EB1210C00732109 /* Debug */,
+				EEE1A6B12EB1210C00732109 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = EE34E11D2EACCF9A00815A83 /* Project object */;
+	rootObject = EEE1A69C2EB1210B00732109 /* Project object */;
 }
