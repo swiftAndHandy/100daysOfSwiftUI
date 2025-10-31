@@ -17,9 +17,9 @@ struct ContentView: View {
         NavigationStack {
             Group {
                 if gridView {
-                    GridView(missions: missions, astronauts: astronauts)
+                    GridLayout(missions: missions, astronauts: astronauts)
                 } else {
-                    GridView(missions: missions, astronauts: astronauts)
+                    ListLayout(missions: missions, astronauts: astronauts)
                 }
             }
             .toolbar {

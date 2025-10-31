@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct GridView: View {
+struct GridLayout: View {
     let columns = [
         GridItem(.adaptive(minimum: 150))
     ]
@@ -58,6 +58,6 @@ struct GridView: View {
     let astronauts: [String: Astronaut] = Bundle.main.decode("astronauts.json")
     let missions: [Mission] = Bundle.main.decode("missions.json")
     
-    GridView(missions: missions, astronauts: astronauts)
+    GridLayout(missions: missions, astronauts: astronauts)
         .preferredColorScheme(.dark)
 }
