@@ -45,6 +45,8 @@ struct DetailView: View {
     var body: some View {
         NavigationLink("Open to Random Number", value: Int.random(in: 1...1000))
             .navigationTitle("Number: \(number)")
+
+        .navigationTitle("test")
 //            .toolbar {
 //                Button("Home") {
 //                    path = NavigationPath()
