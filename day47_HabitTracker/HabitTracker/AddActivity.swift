@@ -23,19 +23,23 @@ struct AddActivity: View {
             }
             .navigationTitle("Add activity")
             .toolbar {
-                Button("Save") {
-                    let trimmedTitle = name.trimmingCharacters(in: .whitespaces)
-                    guard trimmedTitle.isEmpty == false else {
-                        return
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Save", role: .confirm) {
+                        let trimmedTitle = name.trimmingCharacters(in: .whitespaces)
+                        guard trimmedTitle.isEmpty == false else {
+                            return
+                        }
+                        
+                        let activity = Activity(title: trimmedTitle, description: description)
+                        
+                        data.activities.append(activity)
+                        dismiss()
                     }
-                    
-                    let activity = Activity(title: trimmedTitle, description: description)
-                    
-                    data.activities.append(activity)
-                    dismiss()
                 }
                 
-                Button("Cancel") { dismiss() }
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cancel", role: .cancel) { dismiss() }
+                }
             }
         }
     }
