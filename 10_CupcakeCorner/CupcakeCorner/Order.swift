@@ -38,10 +38,26 @@ class Order: Codable {
     var addFrosting: Bool = false
     var addSprinkles: Bool = false
     
-    var name: String = ""
-    var streetAddress: String = ""
-    var city: String = ""
-    var zip: String = ""
+    var name: String = UserDefaults.standard.string(forKey: "name") ?? "" {
+        didSet {
+            UserDefaults.standard.set(name, forKey: "name")
+        }
+    }
+    var streetAddress: String = UserDefaults.standard.string(forKey: "address") ?? "" {
+        didSet {
+            UserDefaults.standard.set(streetAddress, forKey: "address")
+        }
+    }
+    var city: String = UserDefaults.standard.string(forKey: "city") ?? "" {
+        didSet {
+            UserDefaults.standard.set(city, forKey: "city")
+        }
+    }
+    var zip: String = UserDefaults.standard.string(forKey: "zip") ?? "" {
+        didSet {
+            UserDefaults.standard.set(zip, forKey: "zip")
+        }
+    }
     
     var hasValidAddress: Bool {
         !name.trimmingCharacters(in: .whitespaces).isEmpty && !streetAddress.trimmingCharacters(in: .whitespaces).isEmpty && !city.trimmingCharacters(in: .whitespaces).isEmpty && !zip.trimmingCharacters(in: .whitespaces).isEmpty && zip.trimmingCharacters(in: .whitespaces).allSatisfy(\.isNumber)
@@ -53,4 +69,5 @@ class Order: Codable {
         cost += addSprinkles ? 0.5 * Decimal(quantity) : 0
         return cost
     }
+    
 }
