@@ -18,20 +18,25 @@ struct ContentView: View {
         NavigationStack {
             List {
                 ForEach(books) { book in
-                    HStack {
-                        EmojiRatingView(rating: book.rating)
-                            .font(.largeTitle)
-                        
-                        VStack(alignment: .leading) {
-                            Text(book.title)
-                                .font(.headline)
-                            Text(book.author)
-                                .foregroundStyle(.secondary)
+                    NavigationLink(value: book) {
+                        HStack {
+                            EmojiRatingView(rating: book.rating)
+                                .font(.largeTitle)
+                            
+                            VStack(alignment: .leading) {
+                                Text(book.title)
+                                    .font(.headline)
+                                Text(book.author)
+                                    .foregroundStyle(.secondary)
+                            }
                         }
                     }
                 }
             }
-            .navigationTitle("Bookstore")
+            .navigationTitle("Booksworm")
+            .navigationDestination(for: Book.self) { book in
+                DetailView(book: book)
+            }
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
