@@ -29,15 +29,21 @@ struct ContentView: View {
                             VStack(alignment: .leading) {
                                 Text(book.title)
                                     .font(.headline)
+                                    .foregroundStyle(book.rating == 1 ? .red : .primary)
                                 Text(book.author)
                                     .foregroundStyle(.secondary)
+                            }
+                            
+                            if book.rating == 0 {
+                                Text("unrated")
+                                    .frame(maxWidth: .infinity,  alignment: .center)
                             }
                         }
                     }
                 }
                 .onDelete(perform: deleteBooks)
             }
-            .navigationTitle("Booksworm")
+            .navigationTitle("Bookworm")
             .navigationDestination(for: Book.self) { book in
                 DetailView(book: book)
             }
