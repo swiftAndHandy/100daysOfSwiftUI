@@ -47,7 +47,8 @@ struct AddBookView: View {
                             author: author,
                             genre: genre,
                             review: review,
-                            rating: rating
+                            rating: rating,
+                            date: .now
                         )
                         
                         modelContext.insert(newBook)
