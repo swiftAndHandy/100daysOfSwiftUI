@@ -9,7 +9,7 @@ import SwiftData
 import SwiftUI
 
 struct DetailView: View {
-    let book: Book
+    @State var book: Book
     
     @Environment(\.modelContext) var modelContext
     @Environment(\.dismiss) var dismiss
@@ -38,7 +38,7 @@ struct DetailView: View {
             Text(book.review)
                 .padding()
             
-            RatingView(rating: .constant(book.rating))
+            RatingView(rating: $book.rating)
                 .font(.largeTitle)
         }
         .navigationTitle(book.title)
