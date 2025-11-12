@@ -11,22 +11,15 @@ import SwiftUI
 struct ContentView: View {
     @Environment(\.modelContext) var modelContext
     
-    @Query(
-        filter: #Predicate<User> { user in
-            user.name.localizedStandardContains("R") &&
-            user.city == "London"
-        },
-        sort: \User.name
-    ) var users: [User]
-
+    @State private var showingUpcomingOnly: Bool = false
+    @State private var sortOrder: [SortDescriptor<User>] = [SortDescriptor(\User.name),
+                                                          SortDescriptor(\User.joinDate)]
     
     var body: some View {
         NavigationStack{
-            List(users) { user in
-                Text(user.name)
-            }
+   
+            UsersView(minimumJoinDate: showingUpcomingOnly ? .now : .distantPast, sortOrder: sortOrder)
             .navigationTitle("Users")
-            
             .toolbar {
                 Button("Add Sample", systemImage: "plus") {
                     try? modelContext.delete(model: User.self)
@@ -40,6 +33,26 @@ struct ContentView: View {
                     modelContext.insert(third)
                     modelContext.insert(fourth)
                 }
+                
+                Button(showingUpcomingOnly ? "Show Everyone" : "Show upcoming") {
+                    showingUpcomingOnly.toggle()
+                }
+                
+                Menu("Sort", systemImage: "arrow.up.arrow.down") {
+                    Picker("Sort", selection: $sortOrder) {
+                        Text("Sort by Name")
+                            .tag([
+                                SortDescriptor(\User.name),
+                                SortDescriptor(\User.joinDate)
+                            ])
+                        Text("Sort by Join Date")
+                            .tag([
+                                SortDescriptor(\User.joinDate),
+                                SortDescriptor(\User.name)
+                            ])
+                    }
+                }
+                
             }
         }
     }
