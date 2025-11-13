@@ -18,13 +18,13 @@ struct AddView: View {
     
     let localCurrency = Locale.current.currency?.identifier ?? "USD"
     
-    let types = ["Business", "Personal"]
+    static let types = ["Business", "Personal"]
     
     var body: some View {
         Form {
             TextField("Name", text: $name)
             Picker("Type", selection: $type) {
-                ForEach(types, id: \.self) {
+                ForEach(Self.types, id: \.self) {
                     Text($0)
                 }
             }
@@ -35,7 +35,7 @@ struct AddView: View {
         .toolbar {
             ToolbarItem(placement: .confirmationAction) {
                 Button("Save") {
-                    let item = ExpenseItem(name: name, type: type, amount: amount, category: type)
+                    let item = ExpenseItem(name: name, type: type, amount: amount)
                     modelContext.insert(item)
                     dismiss()
                 }

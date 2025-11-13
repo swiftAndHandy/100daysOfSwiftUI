@@ -39,19 +39,19 @@ struct ExpensesList: View {
         }
     }
     
-    init(category: String?, sortOrder: [SortDescriptor<ExpenseItem>]){
-        if let category {
-            _expenses = Query(filter: #Predicate<ExpenseItem> { item in
-                item.category == category
-            }, sort: sortOrder)
-        } else {
-            _expenses = Query(sort: sortOrder)
-        }
+    init(type: String = "All", sortBy: [SortDescriptor<ExpenseItem>]){
+            _expenses = Query(filter: #Predicate<ExpenseItem> {
+            if type == "All" {
+                return true
+            } else {
+                return $0.type == type
+            }
+        }, sort: sortBy)
     }
     
 }
 
 #Preview {
-    ExpensesList(category: "Private", sortOrder: [])
+    ExpensesList(type: "All", sortBy: [])
         .modelContainer(for: ExpenseItem.self)
 }

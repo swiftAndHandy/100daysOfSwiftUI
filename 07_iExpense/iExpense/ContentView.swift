@@ -9,11 +9,13 @@ import SwiftData
 import SwiftUI
 
 struct ContentView: View {
-    @State private var sortOrder: [SortDescriptor<ExpenseItem>] = [SortDescriptor(\ExpenseItem.name)]
+    @State private var sortBy: [SortDescriptor<ExpenseItem>] = [SortDescriptor(\ExpenseItem.name)]
+    @State private var sortOrder: SortOrder = .forward
+    @State private var expenseType = "All"
     
     var body: some View {
         NavigationStack {
-            ExpensesList(category: nil, sortOrder: sortOrder)
+            ExpensesList(type: expenseType, sortBy: sortBy)
             .navigationTitle("iExpense")
             .toolbar {
                 NavigationLink {
@@ -22,11 +24,27 @@ struct ContentView: View {
                     Label("Add expense", systemImage: "plus")
                 }
                 
+                Menu("Filter", systemImage: "line.3.horizontal.decrease.circle") {
+                    Picker("Filter", selection: $expenseType) {
+                        Text("Show All")
+                            .tag("All")
+                        
+                        Divider()
+                        
+                        ForEach(AddView.types, id: \.self) { type in
+                            Text(type)
+                                .tag(type)
+                        }
+                        
+                        
+                    }
+                }
+                
                 Menu("Sort", systemImage: "arrow.up.arrow.down") {
-                    Picker("Sort", selection: $sortOrder) {
+                    Picker("Sort", selection: $sortBy) {
                         Text("Sort by category")
                             .tag([
-                                SortDescriptor(\ExpenseItem.category),
+                                SortDescriptor(\ExpenseItem.type),
                             ])
                         
                         Text("Sort by amount")
