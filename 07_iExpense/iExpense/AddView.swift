@@ -35,7 +35,7 @@ struct AddView: View {
         .toolbar {
             ToolbarItem(placement: .confirmationAction) {
                 Button("Save") {
-                    let item = ExpenseItem(name: name, type: type, amount: amount)
+                    let item = ExpenseItem(name: name, type: type, amount: amount, category: type)
                     modelContext.insert(item)
                     dismiss()
                 }
