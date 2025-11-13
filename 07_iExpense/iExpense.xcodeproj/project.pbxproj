@@ -6,15 +6,8 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		EE3E1CE02EAFBB2300FFF97F /* View-ExpenseStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3E1CDF2EAFBB2300FFF97F /* View-ExpenseStyle.swift */; };
-		EE3E1CE22EAFBFF000FFF97F /* ExpenseSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3E1CE12EAFBFF000FFF97F /* ExpenseSection.swift */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXFileReference section */
 		EE34E1252EACCF9A00815A83 /* iExpense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iExpense.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		EE3E1CDF2EAFBB2300FFF97F /* View-ExpenseStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View-ExpenseStyle.swift"; sourceTree = "<group>"; };
-		EE3E1CE12EAFBFF000FFF97F /* ExpenseSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseSection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -39,8 +32,6 @@
 		EE34E11C2EACCF9A00815A83 = {
 			isa = PBXGroup;
 			children = (
-				EE3E1CE12EAFBFF000FFF97F /* ExpenseSection.swift */,
-				EE3E1CDF2EAFBB2300FFF97F /* View-ExpenseStyle.swift */,
 				EE34E1272EACCF9A00815A83 /* iExpense */,
 				EE34E1262EACCF9A00815A83 /* Products */,
 			);
@@ -128,8 +119,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EE3E1CE02EAFBB2300FFF97F /* View-ExpenseStyle.swift in Sources */,
-				EE3E1CE22EAFBFF000FFF97F /* ExpenseSection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
