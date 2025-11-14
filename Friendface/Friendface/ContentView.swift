@@ -16,7 +16,7 @@ struct ContentView: View {
                 NavigationLink(value: user) {
                     HStack {
                         Circle()
-                            .fill(user.isActive ? .green : .red)
+                            .fill(user.isActive ? .green.opacity(0.6) : .red.opacity(0.7))
                             .frame(width: 30)
                         
                         Text(user.name)
@@ -25,7 +25,7 @@ struct ContentView: View {
             }
             .navigationTitle(Text("Friendface"))
             .navigationDestination(for: User.self) { user in
-                Text(user.name)
+                UserDetailView(user: user, allUsers: users)
             }
             .task {
                 await fetchUsers()
