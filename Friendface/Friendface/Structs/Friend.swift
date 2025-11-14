@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Friend {
-    let id: String
-    let name: String
+struct Friend: Hashable, Identifiable, Codable {
+    let id: UUID
+    var name: String
 }
