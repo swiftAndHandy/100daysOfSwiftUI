@@ -34,7 +34,7 @@ struct AddView: View {
         .navigationTitle("Add new expense")
         .toolbar {
             ToolbarItem(placement: .confirmationAction) {
-                Button("Save") {
+                Button("Save", role: .confirm) {
                     let item = ExpenseItem(name: name, type: type, amount: amount)
                     modelContext.insert(item)
                     dismiss()
