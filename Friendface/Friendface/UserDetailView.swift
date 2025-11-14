@@ -11,6 +11,8 @@ struct UserDetailView: View {
     let user: User
     let allUsers: [User]
     
+    @Binding var path: NavigationPath
+    
     var body: some View {
         List {
             Section("About") {
@@ -33,6 +35,15 @@ struct UserDetailView: View {
         }
         .listStyle(.grouped)
         .navigationTitle("\(user.name) (\(user.age))")
+        .toolbar {
+            if path.count > 1 {
+                Button {
+                    path = NavigationPath()
+                } label: {
+                    Label("Close", systemImage: "house.fill")
+                }
+            }
+        }
     }
     
     func findFriend(with id: UUID) -> User {
@@ -42,5 +53,5 @@ struct UserDetailView: View {
 }
 
 #Preview {
-    UserDetailView(user: .example, allUsers: [.example])
+    UserDetailView(user: .example, allUsers: [.example], path: .constant(NavigationPath()))
 }

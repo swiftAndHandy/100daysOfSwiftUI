@@ -10,8 +10,10 @@ import SwiftUI
 struct ContentView: View {
     @State private var users = [User]()
     
+    @State private var path = NavigationPath()
+    
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $path) {
             List(users) { user in
                 NavigationLink(value: user) {
                     HStack {
@@ -25,7 +27,7 @@ struct ContentView: View {
             }
             .navigationTitle(Text("Friendface"))
             .navigationDestination(for: User.self) { user in
-                UserDetailView(user: user, allUsers: users)
+                UserDetailView(user: user, allUsers: users, path: $path)
             }
             .task {
                 await fetchUsers()
