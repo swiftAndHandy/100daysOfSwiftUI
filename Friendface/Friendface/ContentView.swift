@@ -5,10 +5,12 @@
 //  Created by Andre Veltens on 14.11.25.
 //
 
+import SwiftData
 import SwiftUI
 
 struct ContentView: View {
-    @State private var users = [User]()
+    @Environment(\.modelContext) private var modelContext
+    @Query(sort: \User.name) private var users: [User]
     
     @State private var path = NavigationPath()
     
@@ -47,7 +49,16 @@ struct ContentView: View {
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .iso8601
             
-            users = try decoder.decode([User].self, from: data)
+            let downloadedUsers = try decoder.decode([User].self, from: data)
+            let insertContext = ModelContext(modelContext.container)
+
+            for user in downloadedUsers {
+                insertContext.insert(user)
+            }
+            
+            try insertContext.save()
+                
+            
         } catch {
             print(error.localizedDescription)
         }
