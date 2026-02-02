@@ -23,7 +23,7 @@ struct AddBookView: View {
     var body: some View {
         NavigationStack {
             Form {
-                Section {
+                Section("Basic Data") {
                     TextField("Name of book", text: $title)
                     TextField("Author's name", text: $author)
                     
