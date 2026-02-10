@@ -15,7 +15,10 @@ extension ContentView {
     class ViewModel {
         private(set) var locations: [Location]
         var selectedPlace: Location?
-        var isUnlocked: Bool = true
+        var isUnlocked: Bool = false
+        
+        var isShowingAuthError: Bool = false
+        var authError: String = ""
         
         let savePath = URL.documentsDirectory.appending(path: "SavedPlaces")
         
@@ -52,11 +55,13 @@ extension ContentView {
                     if success {
                         self.isUnlocked = true
                     } else {
-                        // auth error
+                        self.authError = authError?.localizedDescription ?? "Unknown error"
+                        self.isShowingAuthError = true
                     }
                 }
             } else {
-                // no biometrics
+                self.authError = error?.localizedDescription ?? "Authentication services are not available"
+                self.isShowingAuthError = true
             }
         }
         
