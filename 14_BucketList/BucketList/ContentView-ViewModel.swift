@@ -15,7 +15,7 @@ extension ContentView {
     class ViewModel {
         private(set) var locations: [Location]
         var selectedPlace: Location?
-        var isUnlocked: Bool = false
+        var isUnlocked: Bool = true
         
         let savePath = URL.documentsDirectory.appending(path: "SavedPlaces")
         
