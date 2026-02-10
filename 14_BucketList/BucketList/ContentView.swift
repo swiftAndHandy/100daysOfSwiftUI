@@ -19,7 +19,8 @@ struct ContentView: View {
     @State private var viewModel = ViewModel()
     
     var body: some View {
-        VStack {
+        if viewModel.isUnlocked {
+            
             MapReader { proxy in
                 Map(initialPosition: startPosition) {
                     ForEach(viewModel.locations) { location in
@@ -44,12 +45,19 @@ struct ContentView: View {
                     }
                 }
                 .sheet(item: $viewModel.selectedPlace) { place in
-                    EditView(location: place, onSave: { 
+                    EditView(location: place, onSave: {
                         viewModel.updateLocation(location: $0)
                     })
                 }
                 
             }
+            
+        } else {
+            Button("Unlock places", action: viewModel.authenticate)
+                .padding()
+                .background(.blue)
+                .foregroundStyle(.white)
+                .clipShape(.capsule)
         }
     }
 }

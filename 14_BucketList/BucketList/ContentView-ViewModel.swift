@@ -7,6 +7,7 @@
 
 import CoreLocation
 import Foundation
+import LocalAuthentication
 import MapKit
 
 extension ContentView {
@@ -14,6 +15,7 @@ extension ContentView {
     class ViewModel {
         private(set) var locations: [Location]
         var selectedPlace: Location?
+        var isUnlocked: Bool = false
         
         let savePath = URL.documentsDirectory.appending(path: "SavedPlaces")
         
@@ -39,6 +41,23 @@ extension ContentView {
             let newLocation = Location(id: UUID(), name: "New Location", description: "", latitude: point.latitude, longitude: point.longitude)
             locations.append(newLocation)
             save()
+        }
+        
+        func authenticate() {
+            let context = LAContext()
+            var error: NSError?
+            
+            if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+                context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "To access your bucket list") { success, authError in
+                    if success {
+                        self.isUnlocked = true
+                    } else {
+                        // auth error
+                    }
+                }
+            } else {
+                // no biometrics
+            }
         }
         
         func updateLocation(location: Location) {
