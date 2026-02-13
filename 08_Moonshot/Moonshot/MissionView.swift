@@ -22,9 +22,10 @@ struct MissionView: View {
                 Image(mission.image)
                     .resizable()
                     .scaledToFit()
-                    .containerRelativeFrame(.horizontal) {width, axis in
+                    .containerRelativeFrame(.horizontal) { width, axis in
                         width * 0.6
                     }
+                    .accessibilityLabel(mission.badge)
                 if let date = mission.launchDate {
                     Label(date.formatted(date: .complete, time: .omitted), systemImage: "calendar")
                         .padding(.bottom)

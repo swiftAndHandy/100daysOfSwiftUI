@@ -29,6 +29,7 @@ struct CrewOverView: View {
                                 Text(crewMember.astronaut.name)
                                     .foregroundStyle(.white)
                                     .font(.headline.bold())
+                                    .accessibilityLabel(crewMember.astronaut.name.replacingOccurrences(of: ".", with: " "))
                                 
                                 Text(crewMember.role)
                                     .foregroundStyle(.white.opacity(0.6))
