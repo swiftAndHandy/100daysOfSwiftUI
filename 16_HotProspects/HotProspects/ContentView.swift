@@ -11,23 +11,18 @@ struct ContentView: View {
     @State private var backgroundColor = Color.red
     
     var body: some View {
-        VStack {
-            Text("Hello world!")
-                .padding()
-                .background(backgroundColor)
-            
-            Text("Change Color")
-                .padding()
-                .contextMenu {
-                    Button("Red", systemImage: isSelectedColor(backgroundColor, newColor: .red)) {
-                        backgroundColor = .red
+        List {
+            Text("Taylor Swift")
+                .swipeActions {
+                    Button("Delete", systemImage: "minus.circle", role: .destructive) {
+                        print("Delete")
                     }
-                    Button("Green", systemImage: isSelectedColor(backgroundColor, newColor: .green)) {
-                        backgroundColor = .green
+                }
+                .swipeActions(edge: .leading) {
+                    Button("Pin", systemImage: "pin") {
+                        print("Pinning")
                     }
-                    Button("Blue", systemImage: isSelectedColor(backgroundColor, newColor: .blue)) {
-                        backgroundColor = .blue
-                    }
+                    .tint(.orange)
                 }
         }
         
