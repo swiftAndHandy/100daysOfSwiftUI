@@ -6,31 +6,40 @@
 //
 
 import SwiftUI
+import UserNotifications
 
 struct ContentView: View {
     @State private var backgroundColor = Color.red
     
     var body: some View {
-        List {
-            Text("Taylor Swift")
-                .swipeActions {
-                    Button("Delete", systemImage: "minus.circle", role: .destructive) {
-                        print("Delete")
+        VStack {
+            Button("Request Permission") {
+                UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+                    if granted {
+                        print("All set!")
+                    } else if let error {
+                        print(error.localizedDescription)
                     }
                 }
-                .swipeActions(edge: .leading) {
-                    Button("Pin", systemImage: "pin") {
-                        print("Pinning")
+            }
+            .padding(.vertical)
+            Button("Schedule Notification") {
+                let content = UNMutableNotificationContent()
+                content.title = "Katzenklo reinigen."
+                content.subtitle = "Das ist wichtig."
+                content.sound = .default
+                
+                let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+                
+                let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+                
+                UNUserNotificationCenter.current().add(request) { error in
+                    if let error {
+                        print(error.localizedDescription)
                     }
-                    .tint(.orange)
                 }
+            }
         }
-        
-    }
-    
-    func isSelectedColor(_ color: Color, newColor: Color) -> String {
-        return color == newColor ? "checkmark.circle.fill" : ""
-        
     }
     
 }
