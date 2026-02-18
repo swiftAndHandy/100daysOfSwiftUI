@@ -8,15 +8,29 @@
 
 /* Begin PBXBuildFile section */
 		EE4B835F2F44A34A005EA879 /* SamplePackage in Frameworks */ = {isa = PBXBuildFile; productRef = EE4B835E2F44A34A005EA879 /* SamplePackage */; };
+		EE4B83AA2F4611A4005EA879 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = EE4B83A92F4611A4005EA879 /* CodeScanner */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		EE39FD782F41FB8E00D93923 /* HotProspects.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HotProspects.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		EE4B83AC2F46131B005EA879 /* Exceptions for "HotProspects" folder in "HotProspects" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = EE39FD772F41FB8E00D93923 /* HotProspects */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		EE39FD7A2F41FB8E00D93923 /* HotProspects */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				EE4B83AC2F46131B005EA879 /* Exceptions for "HotProspects" folder in "HotProspects" target */,
+			);
 			path = HotProspects;
 			sourceTree = "<group>";
 		};
@@ -27,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE4B83AA2F4611A4005EA879 /* CodeScanner in Frameworks */,
 				EE4B835F2F44A34A005EA879 /* SamplePackage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -71,6 +86,7 @@
 			name = HotProspects;
 			packageProductDependencies = (
 				EE4B835E2F44A34A005EA879 /* SamplePackage */,
+				EE4B83A92F4611A4005EA879 /* CodeScanner */,
 			);
 			productName = HotProspects;
 			productReference = EE39FD782F41FB8E00D93923 /* HotProspects.app */;
@@ -102,6 +118,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				EE4B835D2F44A34A005EA879 /* XCRemoteSwiftPackageReference "SamplePackage" */,
+				EE4B83A82F4611A4005EA879 /* XCRemoteSwiftPackageReference "CodeScanner" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = EE39FD792F41FB8E00D93923 /* Products */;
@@ -263,6 +280,8 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HotProspects/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need to Scan QR-Codes.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -307,6 +326,8 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HotProspects/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need to Scan QR-Codes.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -370,6 +391,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		EE4B83A82F4611A4005EA879 /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/CodeScanner";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.5.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -377,6 +406,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = EE4B835D2F44A34A005EA879 /* XCRemoteSwiftPackageReference "SamplePackage" */;
 			productName = SamplePackage;
+		};
+		EE4B83A92F4611A4005EA879 /* CodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EE4B83A82F4611A4005EA879 /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
