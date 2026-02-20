@@ -38,34 +38,51 @@ struct ProspectsView: View {
     var body: some View {
         NavigationStack {
             List(prospects, selection: $selectedProspects) { prospect in
-                VStack(alignment: .leading) {
-                    Text(prospect.name)
-                        .font(.headline)
-                    Text(prospect.emailAddress)
-                        .foregroundStyle(.secondary)
-                }
-                .swipeActions {
-                    Button("Delete", systemImage: "trash", role: .destructive) {
-                        modelContext.delete(prospect)
-                    }
-                    if prospect.isContacted {
-                        Button("Mark Uncontacted", systemImage: "person.crop.circle.badge.xmark") {
-                            prospect.isContacted.toggle()
+                NavigationLink {
+                    EditProspectView(prospect: prospect)
+                } label: {
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text(prospect.name)
+                                .font(.headline)
+                            Text(prospect.emailAddress)
+                                .foregroundStyle(.secondary)
                         }
-                        .tint(.blue)
-                    } else {
-                        Button ("Mark Contacted", systemImage: "person.crop.circle.fill.badge.checkmark") {
-                            prospect.isContacted.toggle()
+                        Spacer()
+                        if filter == .none && prospect.isContacted {
+                            Image(systemName: "checkmark")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 20, height: 20)
+                                .padding(.horizontal)
+                                .foregroundStyle(.green)
                         }
-                        .tint(.green)
-                        
                     }
-                    Button("Remind me", systemImage: "bell") {
-                        addNotification(for: prospect)
+                    .swipeActions {
+                        Button("Delete", systemImage: "trash", role: .destructive) {
+                            modelContext.delete(prospect)
+                        }
+                        if prospect.isContacted {
+                            Button("Mark Uncontacted", systemImage: "person.crop.circle.fill.badge.xmark") {
+                                prospect.isContacted.toggle()
+                                try! modelContext.save()
+                            }
+                            .tint(.blue)
+                        } else {
+                            Button ("Mark Contacted", systemImage: "person.crop.circle.fill.badge.checkmark") {
+                                prospect.isContacted.toggle()
+                                try! modelContext.save()
+                            }
+                            .tint(.green)
+                            
+                        }
+                        Button("Remind me", systemImage: "bell") {
+                            addNotification(for: prospect)
+                        }
+                        .tint(.orange)
                     }
-                    .tint(.orange)
+                    .tag(prospect)
                 }
-                .tag(prospect)
             }
             .navigationTitle(title)
             .toolbar {
@@ -75,9 +92,9 @@ struct ProspectsView: View {
                     }
                 }
                 
-                ToolbarItem(placement: .topBarLeading) {
-                    EditButton()
-                }
+//                ToolbarItem(placement: .topBarLeading) {
+//                    EditButton()
+//                }
                 
                 if !selectedProspects.isEmpty {
                     ToolbarItem(placement: .automatic) {
@@ -87,6 +104,9 @@ struct ProspectsView: View {
             }
             .sheet(isPresented: $isShowingScanner) {
                 CodeScannerView(codeTypes: [.qr], requiresPhotoOutput: false, simulatedData: "Andrew Veltens\nhi@bp.com", completion: handleScan)
+            }
+            .onAppear {
+                selectedProspects = []
             }
         }
     }
