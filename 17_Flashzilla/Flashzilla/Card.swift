@@ -7,10 +7,27 @@
 
 import Foundation
 
-struct Card {
+struct Card: Codable {
     var prompt: String
     var answer: String
+}
+
+struct CardStoreage {
+    private static let storageKey = "Cards"
     
+    static func saveData(for cards: [Card]) {
+        if let data = try? JSONEncoder().encode(cards) {
+            UserDefaults.standard.set(data, forKey: storageKey)
+        }
+    }
+    
+    static func loadData() -> [Card] {
+        guard let data = UserDefaults.standard.data(forKey: storageKey),
+              let decoded = try? JSONDecoder().decode([Card].self, from: data)
+        else { return [] }
+        
+        return decoded
+    }
 }
 
 extension Card {
