@@ -7,9 +7,16 @@
 
 import Foundation
 
-struct Card: Codable {
+struct Card: Codable, Equatable, Identifiable {
+    let id: UUID
     var prompt: String
     var answer: String
+    
+    init(prompt: String, answer: String) {
+        self.id = UUID()
+        self.prompt = prompt
+        self.answer = answer
+    }
 }
 
 struct CardStoreage {

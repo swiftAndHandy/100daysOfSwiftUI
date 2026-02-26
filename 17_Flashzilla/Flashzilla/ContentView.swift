@@ -20,8 +20,9 @@ struct ContentView: View {
     @Environment(\.accessibilityVoiceOverEnabled) var accessibilityVoiceOverEnabled
     @State private var cards = [Card]()
     @State private var showingEditScreen: Bool = false
+    @State private var timeRemaining: Int = 0
     
-    @State private var timeRemaining = 100
+    let timeRemainingBaseValue = 10
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     @Environment(\.scenePhase) var scenePhase
@@ -44,10 +45,11 @@ struct ContentView: View {
                     .clipShape(.capsule)
                 
                 ZStack {
-                    ForEach(0..<cards.count, id: \.self) { index in
-                        CardView(card: cards[index]) {
+                    ForEach(cards) { card in
+                        let index = cards.firstIndex(of: card)!
+                        CardView(card: card) { reinsert in
                             withAnimation {
-                                removeCard(at: index)
+                                removeCard(at: index, reinsert: reinsert)
                             }
                         }
                         .stacked(at: index, in: cards.count)
@@ -90,7 +92,7 @@ struct ContentView: View {
                     HStack {
                         Button {
                             withAnimation {
-                                removeCard(at: cards.count - 1)
+                                removeCard(at: cards.count - 1, reinsert: true)
                             }
                         } label: {
                             Image(systemName: "xmark.circle")
@@ -105,7 +107,7 @@ struct ContentView: View {
                         
                         Button {
                             withAnimation {
-                                removeCard(at: cards.count - 1)
+                                removeCard(at: cards.count - 1, reinsert: false)
                             }
                         } label: {
                             Image(systemName: "checkmark.circle")
@@ -127,6 +129,8 @@ struct ContentView: View {
             
             if timeRemaining > 0 {
                 timeRemaining -= 1
+            } else {
+                cards = []
             }
         }
         .onChange(of: scenePhase) {
@@ -138,17 +142,22 @@ struct ContentView: View {
         .onAppear(perform: resetCards)
     }
     
-    func removeCard(at index: Int) {
+    func removeCard(at index: Int, reinsert: Bool) {
         guard index >= 0 else { return }
         
-        cards.remove(at: index)
+        if reinsert {
+            cards.move(fromOffsets: IndexSet(integer: index), toOffset: 0)
+        } else {
+            cards.remove(at: index)
+        }
+        
         if cards.isEmpty {
             appIsActive = false
         }
     }
     
     func resetCards() {
-        timeRemaining = 100
+        timeRemaining = timeRemainingBaseValue
         appIsActive = true
         cards = CardStoreage.loadData()
     }
