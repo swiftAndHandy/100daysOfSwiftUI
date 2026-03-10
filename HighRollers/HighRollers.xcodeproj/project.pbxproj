@@ -6,8 +6,38 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		EE4A73AE2F605B020056CEE9 /* HighRollers-WatchOS Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = EE4A73AD2F605B020056CEE9 /* HighRollers-WatchOS Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EE4A73AF2F605B020056CEE9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EE1F2BE82F6042A600009FA5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EE4A73AC2F605B020056CEE9;
+			remoteInfo = "HighRollers-WatchOS Watch App";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		EE4A73BA2F605B020056CEE9 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				EE4A73AE2F605B020056CEE9 /* HighRollers-WatchOS Watch App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		EE1F2BF02F6042A600009FA5 /* HighRollers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HighRollers.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE4A73A82F605B020056CEE9 /* HighRollers-WatchOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HighRollers-WatchOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE4A73AD2F605B020056CEE9 /* HighRollers-WatchOS Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HighRollers-WatchOS Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -16,10 +46,22 @@
 			path = HighRollers;
 			sourceTree = "<group>";
 		};
+		EE4A73B12F605B020056CEE9 /* HighRollers-WatchOS Watch App */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "HighRollers-WatchOS Watch App";
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		EE1F2BED2F6042A600009FA5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE4A73AA2F605B020056CEE9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -33,6 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				EE1F2BF22F6042A600009FA5 /* HighRollers */,
+				EE4A73B12F605B020056CEE9 /* HighRollers-WatchOS Watch App */,
 				EE1F2BF12F6042A600009FA5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,6 +84,8 @@
 			isa = PBXGroup;
 			children = (
 				EE1F2BF02F6042A600009FA5 /* HighRollers.app */,
+				EE4A73A82F605B020056CEE9 /* HighRollers-WatchOS.app */,
+				EE4A73AD2F605B020056CEE9 /* HighRollers-WatchOS Watch App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -70,6 +115,47 @@
 			productReference = EE1F2BF02F6042A600009FA5 /* HighRollers.app */;
 			productType = "com.apple.product-type.application";
 		};
+		EE4A73A72F605B020056CEE9 /* HighRollers-WatchOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EE4A73BE2F605B020056CEE9 /* Build configuration list for PBXNativeTarget "HighRollers-WatchOS" */;
+			buildPhases = (
+				EE4A73A62F605B020056CEE9 /* Resources */,
+				EE4A73BA2F605B020056CEE9 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EE4A73B02F605B020056CEE9 /* PBXTargetDependency */,
+			);
+			name = "HighRollers-WatchOS";
+			packageProductDependencies = (
+			);
+			productName = "HighRollers-WatchOS";
+			productReference = EE4A73A82F605B020056CEE9 /* HighRollers-WatchOS.app */;
+			productType = "com.apple.product-type.application.watchapp2-container";
+		};
+		EE4A73AC2F605B020056CEE9 /* HighRollers-WatchOS Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EE4A73BD2F605B020056CEE9 /* Build configuration list for PBXNativeTarget "HighRollers-WatchOS Watch App" */;
+			buildPhases = (
+				EE4A73A92F605B020056CEE9 /* Sources */,
+				EE4A73AA2F605B020056CEE9 /* Frameworks */,
+				EE4A73AB2F605B020056CEE9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				EE4A73B12F605B020056CEE9 /* HighRollers-WatchOS Watch App */,
+			);
+			name = "HighRollers-WatchOS Watch App";
+			packageProductDependencies = (
+			);
+			productName = "HighRollers-WatchOS Watch App";
+			productReference = EE4A73AD2F605B020056CEE9 /* HighRollers-WatchOS Watch App.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -81,6 +167,12 @@
 				LastUpgradeCheck = 2630;
 				TargetAttributes = {
 					EE1F2BEF2F6042A600009FA5 = {
+						CreatedOnToolsVersion = 26.3;
+					};
+					EE4A73A72F605B020056CEE9 = {
+						CreatedOnToolsVersion = 26.3;
+					};
+					EE4A73AC2F605B020056CEE9 = {
 						CreatedOnToolsVersion = 26.3;
 					};
 				};
@@ -100,12 +192,28 @@
 			projectRoot = "";
 			targets = (
 				EE1F2BEF2F6042A600009FA5 /* HighRollers */,
+				EE4A73A72F605B020056CEE9 /* HighRollers-WatchOS */,
+				EE4A73AC2F605B020056CEE9 /* HighRollers-WatchOS Watch App */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		EE1F2BEE2F6042A600009FA5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE4A73A62F605B020056CEE9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE4A73AB2F605B020056CEE9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -122,7 +230,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EE4A73A92F605B020056CEE9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EE4A73B02F605B020056CEE9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EE4A73AC2F605B020056CEE9 /* HighRollers-WatchOS Watch App */;
+			targetProxy = EE4A73AF2F605B020056CEE9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		EE1F2BF92F6042A700009FA5 /* Debug */ = {
@@ -310,6 +433,104 @@
 			};
 			name = Release;
 		};
+		EE4A73B82F605B020056CEE9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GK2Y666WCQ;
+				INFOPLIST_KEY_CFBundleDisplayName = HighRollers;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.boolproof.HighRollers-WatchOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		EE4A73B92F605B020056CEE9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GK2Y666WCQ;
+				INFOPLIST_KEY_CFBundleDisplayName = HighRollers;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.boolproof.HighRollers-WatchOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		EE4A73BB2F605B020056CEE9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GK2Y666WCQ;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "HighRollers-WatchOS";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKWatchOnly = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.boolproof.HighRollers-WatchOS.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 26.2;
+			};
+			name = Debug;
+		};
+		EE4A73BC2F605B020056CEE9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GK2Y666WCQ;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "HighRollers-WatchOS";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKWatchOnly = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.boolproof.HighRollers-WatchOS.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 26.2;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -327,6 +548,24 @@
 			buildConfigurations = (
 				EE1F2BFC2F6042A700009FA5 /* Debug */,
 				EE1F2BFD2F6042A700009FA5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EE4A73BD2F605B020056CEE9 /* Build configuration list for PBXNativeTarget "HighRollers-WatchOS Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE4A73BB2F605B020056CEE9 /* Debug */,
+				EE4A73BC2F605B020056CEE9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EE4A73BE2F605B020056CEE9 /* Build configuration list for PBXNativeTarget "HighRollers-WatchOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE4A73B82F605B020056CEE9 /* Debug */,
+				EE4A73B92F605B020056CEE9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
