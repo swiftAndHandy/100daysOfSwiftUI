@@ -7,6 +7,12 @@
 
 import SwiftUI
 
+struct DiceRoll: Identifiable, Codable {
+    var id: UUID = UUID()
+    var results: [Int]
+    var date: Date
+}
+
 struct DiceView: View {
     var value: Int
     var body: some View {
@@ -40,8 +46,10 @@ struct ContentView: View {
     
     @State private var amountOfDices: Int = 1
     @State private var amountOfSides: Int = 6
+    @State private var historyIsPresented: Bool = false
     
     @State private var results = [Int]()
+    @State private var history: [DiceRoll] = []
     
     var body: some View {
         NavigationStack {
@@ -72,15 +80,23 @@ struct ContentView: View {
                         .pickerStyle(.wheel)
                     }
                 }
-                Button("Roll \(amountOfDices)w\(amountOfSides)") {
+                Button("Roll \(amountOfDices)d\(amountOfSides)") {
                     rollDice()
                 }
                 .buttonStyle(.glass)
                 Spacer()
             }
             .toolbar {
-                Button("Test") {}
+                Button("Test", systemImage: "clock.arrow.circlepath") {
+                    historyIsPresented = true
+                }
+                    .sheet(isPresented: $historyIsPresented) {
+                        HistoryView(for: history)
+                    }
             }
+        }
+        .onAppear {
+            history = loadResults()
         }
     }
     
@@ -89,7 +105,30 @@ struct ContentView: View {
         for _ in 0..<amountOfDices {
             results.append(Int.random(in: 1...amountOfSides))
         }
-        print(results)
+        saveResults()
+    }
+    
+    func saveResults() {
+        do {
+            var history = loadResults()
+            history.append(DiceRoll(results: results, date: Date()))
+            let data = try JSONEncoder().encode(history)
+            try data.write(to: savePath, options: [.atomic, .completeFileProtection])
+            self.history = history
+        } catch {
+            print("Error while saving: \(error)")
+        }
+    }
+    
+    func loadResults() -> [DiceRoll] {
+        do {
+            let data = try Data(contentsOf: savePath)
+            return try JSONDecoder().decode([DiceRoll].self, from: data)
+            
+        } catch {
+            print("Error while loading: \(error)")
+            return []
+        }
     }
 
 }
