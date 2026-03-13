@@ -30,9 +30,16 @@ struct ResortView: View {
                     
                     Text("Facilities")
                         .font(.headline)
+                        .padding(.vertical, 4)
                     
                     Text(resort.facilities, format: .list(type: .and))
                         .padding(.vertical)
+                    
+//                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 120))]) {
+//                        ForEach(resort.facilities, id: \.self) { facility in
+//                            FacilityView(facility: facility)
+//                        }
+//                    }
                 }
                 .padding(.horizontal)
             }
